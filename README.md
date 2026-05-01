@@ -1,62 +1,51 @@
-# Formula Finance AI Office — Skills & Knowledge Base
+# AI Skills & Knowledge Base
 
-> Централизованное хранилище скиллов и базы знаний для агентов Formula Finance AI Office.
+Полная коллекция скиллов и knowledge-файлов для Claude.ai и Claude Code.
 
 ## Структура
 
 ```
-ai-skills-knowledge-base/
-├── skills/
-│   ├── user/          # Скиллы разработки (16 скиллов)
-│   ├── public/        # Публичные скиллы (8 скиллов)
-│   └── examples/      # Примеры скиллов (22 скилла)
-├── knowledge/
-│   ├── project/       # Архитектурные документы (79 файлов)
-│   ├── agents/        # Промпты агентов
-│   └── business/      # Бизнес-контекст
-└── INDEX.md
+skills/
+  user/       — 200 установленных скиллов
+  public/     — официальные Anthropic скиллы
+  examples/   — примеры скиллов
+knowledge/    — дополнительные knowledge-файлы
 ```
 
-## Приоритетные скиллы для проекта
+## Статистика
 
-### 🟢 Обязательные (использовать сейчас)
-| Скилл | Назначение |
-|---|---|
-| `skills/user/agency-agents` | Financial Analyst, Analytics Reporter, Finance Tracker |
-| `skills/user/systematic-debugging` | Отладка runtime |
-| `skills/user/verification-before-completion` | Проверка перед коммитом |
-| `skills/user/writing-plans` | Декомпозиция перед кодом |
-| `skills/user/executing-plans` | Исполнение с checkpoint'ами |
-| `skills/user/using-superpowers` | Foundational |
-| `skills/public/xlsx` | KPI, CRM, управленческая отчётность |
-| `skills/public/pdf-reading` | Чтение клиентских документов |
+| Категория | Кол-во |
+|-----------|--------|
+| user skills | 200 |
+| public skills | 16 |
+| example skills | 44 |
+| **ИТОГО** | **260** |
 
-### 🟡 Полезные (по задаче)
-| Скилл | Когда |
-|---|---|
-| `skills/user/code-review-pr` | При добавлении каждого агента |
-| `skills/user/test-driven-development` | handlers.py + runtime.py |
-| `skills/user/brainstorming` | Перед проектированием нового агента |
-| `skills/examples/mcp-builder` | Внешние интеграции (Этап 3) |
-| `skills/examples/web-artifacts-builder` | Pixel Office UI (Этап 4) |
-| `skills/public/docx` | КП, договоры |
-| `skills/public/pptx` | Презентации |
+## Префиксы скиллов
 
-## Стек проекта
+| Префикс | Источник |
+|---------|---------|
+| `agency-agents`, `brainstorming`, `systematic-debugging` и др. | obra/superpowers + custom |
+| `jf-*` | jeffallan/claude-skills (66 full-stack скиллов) |
+| `ar-*` | alirezarezvani/claude-skills (finance, C-level, PM) |
+| `gb-*` | glebis/claude-skills (44 инструментальных скилла) |
+| `know-*` | Knowledge-скиллы (синтез из продуктов без SKILL.md) |
+| `acc-*` | awesome-claude-code resources |
+| `superclaude-*` | SuperClaude Framework |
 
+## Ключевые скиллы для FFA/HoReCa
+
+- `master-router` — маршрутизатор, читать первым
+- `agency-agents` — FFA-специфичные агенты
+- `ar-finance` — финансовый аналитик
+- `ar-c-level-advisor` — CEO/CFO советник
+- `gb-tufte-report` — Tufte-стиль дашборды
+- `gb-tdd` — multi-agent TDD
+- `code-review-excellence` — code review по 16 языкам
+
+## Установка
+
+```bash
+git clone https://github.com/formulafinancev-cyber/ai-skills-knowledge-base.git
+cp -r ai-skills-knowledge-base/skills/user/* ~/.claude/skills/
 ```
-Python 3.12 + python-telegram-bot 21.x
-Anthropic API → claude-sonnet-4-5-20250929
-SQLite: tasks / agent_statuses / event_logs / agent_learnings / agent_prompts
-Telegram — основной интерфейс команды
-```
-
-## Текущий статус (май 2026)
-
-- ✅ Шаги 1–5: каркас, config, db, storage, knowledge, prompts, llm, main, auth-guard
-- ⏳ Шаг 6: `/next` и `/agent` через LLM
-- 🔜 Шаг 7: handlers.py + runtime.py
-- 🔜 Шаг 8+: динамические промпты, второй агент
-
----
-*Обновлено: 2026-05-01*
